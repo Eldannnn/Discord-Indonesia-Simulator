@@ -1,6 +1,9 @@
 'use client';
 
+import { useSession, signIn, signOut } from "next-auth/react";
+
 export default function Home() {
+  const { data: session, status } = useSession();
   return (
     <>
       <div className="page-texture" aria-hidden="true"></div>
@@ -17,8 +20,26 @@ export default function Home() {
           ))}
         </nav>
         <div className="topbar-right">
-          <div className="status-badge">Online</div>
-          <button className="btn-enter">Masuk Simulator</button>
+          {status === 'loading' ? (
+            <div className="status-badge">Memuat...</div>
+          ) : session ? (
+            <>
+              <div className="status-badge" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <img src={session.user.image} alt="Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
+                <span style={{ color: 'var(--ink)', fontWeight: '600' }}>{session.user.name}</span>
+              </div>
+              <button className="btn-enter" onClick={() => signOut()} style={{ background: 'var(--bg-warm)', color: 'var(--ink-muted)' }}>
+                Keluar
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="status-badge">Offline</div>
+              <button className="btn-enter" onClick={() => signIn('discord')}>
+                Login Discord
+              </button>
+            </>
+          )}
         </div>
       </header>
 

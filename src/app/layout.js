@@ -11,6 +11,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+import { Providers } from "@/components/Providers";
+
 export const metadata = {
   title: "Discord Indonesia Simulator — Simulasi Politik Nusantara",
   description: "Platform simulasi permainan peran politik Indonesia. Berkampanye, bernegosiasi di DPR, dan bentuk masa depan republik.",
@@ -19,7 +21,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body>{children}</body>
+      <body>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
