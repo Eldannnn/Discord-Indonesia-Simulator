@@ -11,7 +11,7 @@ export default function Home() {
       {/* Topbar */}
       <header className="topbar">
         <div className="topbar-brand">
-          <div className="brand-mark">DIS</div>
+          <img src="/DIS2.png" alt="Logo DIS" style={{ width: '36px', height: 'auto', objectFit: 'contain' }} />
           <div className="brand-text">Discord <span>Indonesia</span> Simulator</div>
         </div>
         <nav className="topbar-nav">
