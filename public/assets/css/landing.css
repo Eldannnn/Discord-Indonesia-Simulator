@@ -1,0 +1,139 @@
+/**
+ * Design Token System & Minimalist Swiss-Editorial Stylesheet
+ * Architecture: Three-Layer Tokens (Primitive -> Semantic -> Component)
+ * Style Reference: Minimalism & Swiss Grid + Editorial Typography
+ */
+
+:root {
+    /* 1. Primitive Tokens */
+    --primitive-alabaster-50: #FAF9F5;
+    --primitive-white: #FFFFFF;
+    --primitive-slate-100: #F1F5F9;
+    --primitive-slate-200: #E2E8F0;
+    --primitive-slate-300: #CBD5E1;
+    --primitive-slate-500: #64748B;
+    --primitive-slate-600: #475569;
+    --primitive-slate-900: #0F172A;
+    --primitive-slate-950: #020617;
+    --primitive-crimson-700: #B91C1C;
+    --primitive-crimson-800: #991B1B;
+    --primitive-crimson-50: #FEF2F2;
+    --primitive-emerald-700: #047857;
+    --primitive-emerald-50: #ECFDF5;
+
+    /* 2. Semantic Tokens */
+    --surface-background: var(--primitive-alabaster-50);
+    --surface-card: var(--primitive-white);
+    --surface-muted: var(--primitive-slate-100);
+    --text-primary: var(--primitive-slate-900);
+    --text-secondary: var(--primitive-slate-600);
+    --text-muted: var(--primitive-slate-500);
+    --border-subtle: var(--primitive-slate-200);
+    --border-strong: var(--primitive-slate-300);
+    --accent-sovereign: var(--primitive-crimson-700);
+    --accent-sovereign-hover: var(--primitive-crimson-800);
+
+    /* 3. Component Tokens */
+    --btn-primary-bg: var(--primitive-slate-900);
+    --btn-primary-text: var(--primitive-white);
+    --focus-ring-color: var(--primitive-slate-900);
+}
+
+body {
+    background-color: var(--surface-background);
+    color: var(--text-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+.font-editorial {
+    font-family: 'Newsreader', Georgia, serif;
+}
+
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Accessible keyboard focus state (WCAG 2.2 AA) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Print styles for official state documents */
+@media print {
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt !important;
+    }
+
+    header, footer, nav, #presidentialActForm, .no-print, button, #toastContainer, #executiveActConfirmModal, #mobileNavDrawer, .print-hidden {
+        display: none !important;
+    }
+
+    main {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .grid {
+        display: block !important;
+    }
+
+    .max-w-7xl {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    #officialDocumentSheet {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        background: transparent !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 15mm 15mm 15mm 15mm;
+    }
+}
+
+/* Official Document Sheet Styles */
+#officialDocumentSheet {
+    box-sizing: border-box;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    outline: none !important;
+}
+
+/* Presidential Handwritten Script Signature */
+.font-signature {
+    font-family: 'Alex Brush', 'Great Vibes', cursive;
+}
